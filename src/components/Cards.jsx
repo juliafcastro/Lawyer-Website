@@ -1,77 +1,157 @@
-// Cards.jsx
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
-import revisao from "./../assets/revisao.jpg"
-import aposentadoriatempo from "./../assets/aposentadoria-tempo.jpg"
-import representacao from "./../assets/representacao.jpg"
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import {
+  Accessibility,
+  HandCoins,
+  ClockFading,
+  FileClock,
+  CircleDollarSign,
+  ClipboardPenLine,
+} from "lucide-react";
+import { motion } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
 
 const cards = [
-    { id: 1, title: "Auxílio Doença", image: "img1.jpg" },
-    { id: 2, title: "Aposentadoria por invalidez", image: "" },
-    { id: 3, title: "Aposentadoria por tempo de contribuição", image: aposentadoriatempo },
-    { id: 4, title: "Revisão da vida toda", image: revisao },
-    { id: 5, title: "Pensão por morte", image: "img3.jpg" },
-    { id: 6, title: "Planejamento previdenciário", image: "img3.jpg" },
-    { id: 7, title: "Representação judicial", image: representacao },
-  ];
+  {
+    id: 1,
+    title: "DIREITO PREVIDENCIÁRIO",
+    description:
+      "Atuamos em aposentadorias, revisões e benefícios, garantindo os direitos previdenciários com segurança e eficiência.",
+    icon: <HandCoins size={35} />,
+  },
+  {
+    id: 2,
+    title: "DIREITO PENAL",
+    description:
+      "Atuamos em aposentadorias, revisões e benefícios, garantindo os direitos previdenciários com segurança e eficiência.",
+    icon: <Accessibility size={35} />,
+  },
+  {
+    id: 3,
+    title: "EXECUÇÃO PENAL",
+    description:
+      "Prestamos acompanhamento em todas as etapas da execução de penas, assegurando cumprimento correto e orientação especializada.",
+    icon: <ClockFading size={35} />,
+  },
+  {
+    id: 4,
+    title: "DIREITO DE FAMÍLIA",
+    description:
+      "Atuamos em divórcios, guarda, pensões e inventários, proporcionando suporte jurídico sério e confiável em questões familiares.",
+    icon: <FileClock size={35} />,
+  },
+  {
+    id: 5,
+    title: "PROCESSO ADMINISTRATIVO",
+    description:
+      "Representamos clientes em recursos, sindicâncias e aposentadorias de servidores, com foco na regularidade e eficiência dos procedimentos.",
+    icon: <CircleDollarSign size={35} />,
+  },
+  {
+    id: 6,
+    title: "PREVIDÊNCIA ESPECIAL E RURAL",
+    description:
+      "Oferecemos orientação em salário-maternidade rural, averbações e regularizações, garantindo acesso a todos os direitos especiais do segurado.",
+    icon: <ClipboardPenLine size={35} />,
+  },
+];
 
-export default function Cards() {
-    const [index, setIndex] = useState(0);
+const RevealOnScroll = ({ children, delay = 0 }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef(null);
 
-  const next = () => setIndex((prev) => (prev + 1) % cards.length);
-  const prev = () => setIndex((prev) => (prev - 1 + cards.length) % cards.length);
-  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  const variants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0 },
+  };
 
   return (
-    <section className="bg-[#0f1320] text-white py-16 flex">
-      <div className="max-w-7xl mx-auto px-8 flex items-center justify-between mb-8">
-        <div>
-          <p className="text-cobre-claro text-sm uppercase tracking-wide font-[merriweather]">serviços</p>
-          <h2 className="text-3xl font-semibold leading-snug font-[merriweather]">
-            Diferentes casos, <span className="italic underline font-[merriweather]">diferentes serviços.</span>
-          </h2>
-        </div>
+    <motion.div
+      ref={ref}
+      variants={variants}
+      initial="hidden"
+      animate={isVisible ? "visible" : "hidden"}
+      transition={{ duration: 0.8, ease: "easeOut", delay }}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
-        {/* botões (sem estado, só animação visual) */}
-        <div className="flex gap-3">
-          <button onClick={prev} className="w-10 h-10 rounded-full border border-cobre-claro hover:bg-cobre-claro cursor-pointer hover:text-[#0f1a26] transition-all">
-            ←
-          </button>
-          <button onClick={next} className="w-10 h-10 rounded-full border border-cobre-claro hover:bg-cobre-claro cursor-pointer hover:text-[#0f1a26] transition-all">
-            →
-          </button>
-        </div>
-      </div>
+export default function Cards() {
+  return (
+    <section className="bg-white min-h-8xl flex flex-col w-full justify-center items-center text-white py-20 px-6 sm:px-4 md:px-2">
+     
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-x-14 md:max-w-6xl xl:max-w-8xl mx-auto">
+        
+          <h3 className="font-[merriweather] text-3xl text-azul-escuro">
+          Explore Nossos Serviços Previdenciários
+        </h3>
+        
+        <p className="md:col-span-2 text-lg font-medium text-azul-escuro/80">
+          Orientamos em aposentadorias, auxílios e revisões, garantindo seus
+          direitos com segurança e eficiência.
+        </p>
 
-      {/* container de scroll com animação */}
-      <div className="md:w-2/3 flex gap-6 overflow-hidden mr-3">
-        <AnimatePresence initial={false}>
-          {cards.slice(index, index + 3).map((card) => (
-            <motion.div
-              key={card.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -30 }}
-              transition={{ duration: 0.4 }}
-              className="relative w-[250px] h-[320px] rounded-lg overflow-hidden group flex-shrink-0"
-            >
-              <img
-                src={card.image}
-                alt={card.title}
-                className="w-full h-full object-cover brightness-[0.8] group-hover:brightness-100 transition-all duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+        {cards.map((card) => (
+          <div
+            key={card.id}
+            className="relative bg-azul-escuro border overflow-hidden shadow-lg hover:drop-shadow-2xl p-6 flex flex-col justify-between rounded-xs transition-all duration-400 hover:scale-103 transform
+             group"
+          >
+            <span
+              className="absolute top-[-10%] right-10 w-20 h-20 bg-white rounded-full blur-3xl opacity-60
+                   transition-all duration-500 transform 
+                   group-hover:translate-x-6 group-hover:-translate-y-8"
+            ></span>
+            <span
+              className="absolute bottom-[-10%] right-16 w-24 h-24 bg-cobre-claro rounded-full blur-3xl opacity-60
+                   transition-all duration-500 transform 
+                   group-hover:translate-x-8 group-hover:translate-y-10"
+            ></span>
 
-              <div className="absolute bottom-6 left-6">
-                <h3 className="text-lg font-semibold font-[merriweather]">{card.title}</h3>
-                <div className="mt-3 flex items-center justify-center w-10 h-10 rounded-full bg-white/20 group-hover:bg-cobre-claro cursor-pointer transition-all duration-300">
-                  <ArrowRight className="text-white group-hover:text-black w-5 h-5" />
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </AnimatePresence>
+            <div>
+              <RevealOnScroll>
+              <h4 className="text-xl font-semibold mb-3 font-[merriweather]">
+                {card.title}
+              </h4>
+              </RevealOnScroll>
+              
+              <RevealOnScroll delay={0.5}><p className="text-gray-200 ">{card.description}</p></RevealOnScroll>
+              
+            </div>
+            <hr className="border-t border-gray-600 my-5" />
+            <div className="flex items-center justify-between text-[#c47b40]">
+              <RevealOnScroll delay={0.6}>{card.icon && card.icon}</RevealOnScroll>
+              
+              <RevealOnScroll delay={0.6}><button
+                className="relative group p-2 text-sm font-semibold text-cobre-claro border-2 border-cobre-claro bg-transparent mt-4 overflow-hidden
+             transition-all duration-600 ease-[cubic-bezier(0.23,1,0.32,1)]
+             hover:scale-102 hover:shadow-[0_0_20px_rgba(193,163,98,0.4)]
+             active:scale-100 cursor-pointer font-[merriweather]"
+              >
+                Saiba mais
+                
+              </button></RevealOnScroll>
+              
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

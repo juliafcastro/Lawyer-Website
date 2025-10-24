@@ -7,9 +7,7 @@ export default function Hero() {
       className="h-screen bg-cover bg-center flex flex-col justify-center px-20 items-start"
       style={{ backgroundImage: `url(${justice})` }}
     >
-      <div className="fixed top-0 mt-4">
-        <Nav />
-      </div>
+      
 
       <h1 className="font-[merriweather] text-[#fcf4e6] font-bold max-w-110 text-3xl mb-5">
         Defendendo seus direitos previdenciários com experiência e compromisso.
@@ -17,7 +15,7 @@ export default function Hero() {
       <h4 className="font-sans text-[#fcf4e6] max-w-80">
         Especialista em aposentadorias, auxílios e revisões do INSS.
       </h4>
-
+    
       <button
   className="
     relative group
@@ -25,12 +23,11 @@ export default function Hero() {
     text-[18px] font-semibold
     text-[#d48550]
     border-2 border-[#d48550]
-    rounded-full
     bg-transparent
-    mt-4
+    mt-6
     overflow-hidden
-    transition-all duration-300
-    ease-[cubic-bezier(0.23,2,0.32,2)]
+    transition-all duration-600
+    ease-[cubic-bezier(0.23,1,0.32,1)]
     hover:scale-110
     hover:text-white
     hover:shadow-[0_0_20px_rgba(193,163,98,0.4)]
@@ -38,14 +35,12 @@ export default function Hero() {
     cursor-pointer
   "
 >
-  <span className="relative z-10">Agende uma consulta</span>
-
-  
+  <span className="relative z-10 font-[merriweather]"><a href="https://wa.me/5551998368987?text=Olá%2C%20gostaria%20de%20fazer%20uma%20consulta!." target="_blank">Faça uma consulta</a></span>
   <span
     className="
       absolute inset-0
       m-auto
-      w-20 h-[50px]
+      w-22 h-[50px]
       rounded-full
       bg-[#d48550]
       scale-0

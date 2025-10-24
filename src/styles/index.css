@@ -10,3 +10,7 @@
     --color-cinza-claro: #b2b5c6;
     --color-light: #e8ebfe;
 }
+
+*{
+    box-sizing: border-box;
+}
