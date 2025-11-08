@@ -3,9 +3,9 @@ import Form from "./Form";
 
 export default function Contact() {
 
-
-
-const msg = "Olá, preciso de ajuda com questões jurídicas. Como posso ser atendido?"
+const msgWpp = "Olá, preciso de ajuda com questões jurídicas. Como posso ser atendido?"
+const msgEmail = "Olá, gostaria de atendimento jurídico e desejo enviar minhas informações.";
+const msgFacebook = "Olá, vim pelo site e preciso falar sobre atendimento jurídico.";
 
   return (
     <div className="bg-cinza-claro/20 min-h-max flex justify-center items-center p-2 sm:p-5 lg:p-10">
@@ -15,7 +15,7 @@ const msg = "Olá, preciso de ajuda com questões jurídicas. Como posso ser ate
         <div className="bg-gray-50 rounded-r-xl p-2 sm:p-5 lg:p-10">
           <Form />
         </div>
-        {/* Ldo direito */}
+        {/* Lado direito */}
         <div className="p-6 md:p-5 lg:p-10 flex flex-col justify-center">
           <h2 className="text-2xl font-semibold text-gray-800 mb-6 font-[merriweather]">Entre em contato</h2>
           <p className="text-gray-600 mb-8">
@@ -24,7 +24,8 @@ const msg = "Olá, preciso de ajuda com questões jurídicas. Como posso ser ate
 
           <div className="space-y-4 ">
             <a
-              href="https://wa.me/5551998368987?text=Olá%2C%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20de%20Direito%20de%20Família." target="_blank"
+              href={`https://wa.me/5551981113381?text=${encodeURIComponent(msgWpp)}`}
+ target="_blank"
               className="flex items-center border text-[#45C451] py-2 px-4 lg:py-3 lg:px-5 bg-transparent
     overflow-hidden
     transition-all duration-600
@@ -36,7 +37,9 @@ const msg = "Olá, preciso de ajuda com questões jurídicas. Como posso ser ate
               <Phone className="mr-2"/> Fale no WhatsApp
             </a>
             <a
-              href="mailto:juliafaverodev@gmail.com"
+              href={`mailto:castroconsultores@yahoo.com.br?subject=${encodeURIComponent(
+    "Contato pelo site"
+  )}&body=${encodeURIComponent(msgEmail)}`}
               className="flex items-center border text-[#BA3D47] py-2 px-4 lg:py-3 lg:px-5 bg-transparent
     overflow-hidden
     transition-all duration-600
@@ -48,7 +51,7 @@ const msg = "Olá, preciso de ajuda com questões jurídicas. Como posso ser ate
               <Mail className="mr-2"/> Envie um E-mail
             </a>
             <a
-              href="https://facebook.com/seuprofissional"
+              href={`https://m.me/julecir.deoliveiracastro?ref=${encodeURIComponent(msgFacebook)}`}
               target="_blank"
               className="flex items-center border text-[#2845BD] py-2 px-4 lg:py-3 lg:px-5 bg-transparent
     overflow-hidden

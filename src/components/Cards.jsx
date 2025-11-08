@@ -1,4 +1,4 @@
-import Carousel from "react-multi-carousel";
+
 import "react-multi-carousel/lib/styles.css";
 import {
   Accessibility,
@@ -18,6 +18,7 @@ const cards = [
     description:
       "Atuamos em aposentadorias, revisões e benefícios, garantindo os direitos previdenciários com segurança e eficiência.",
     icon: <HandCoins size={35} />,
+     whatsappMessage: "Olá, vim pelo site e gostaria de mais informações sobre Direito Previdenciário."
   },
   {
     id: 2,
@@ -25,6 +26,7 @@ const cards = [
     description:
       "Atuamos em aposentadorias, revisões e benefícios, garantindo os direitos previdenciários com segurança e eficiência.",
     icon: <Accessibility size={35} />,
+    whatsappMessage: "Olá, vim pelo site e gostaria de mais informações sobre Direito Penal."
   },
   {
     id: 3,
@@ -32,6 +34,7 @@ const cards = [
     description:
       "Prestamos acompanhamento em todas as etapas da execução de penas, assegurando cumprimento correto e orientação especializada.",
     icon: <ClockFading size={35} />,
+    whatsappMessage: "Olá, vim pelo site e gostaria de mais informações sobre Execução Penal."
   },
   {
     id: 4,
@@ -39,6 +42,7 @@ const cards = [
     description:
       "Atuamos em divórcios, guarda, pensões e inventários, proporcionando suporte jurídico sério e confiável em questões familiares.",
     icon: <FileClock size={35} />,
+    whatsappMessage: "Olá, vim pelo site e gostaria de mais informações sobre Direito de Família."
   },
   {
     id: 5,
@@ -46,6 +50,7 @@ const cards = [
     description:
       "Representamos clientes em recursos, sindicâncias e aposentadorias de servidores, com foco na regularidade e eficiência dos procedimentos.",
     icon: <CircleDollarSign size={35} />,
+    whatsappMessage: "Olá, vim pelo site e gostaria de mais informações sobre Processo Administrativo."
   },
   {
     id: 6,
@@ -53,6 +58,7 @@ const cards = [
     description:
       "Oferecemos orientação em salário-maternidade rural, averbações e regularizações, garantindo acesso a todos os direitos especiais do segurado.",
     icon: <ClipboardPenLine size={35} />,
+    whatsappMessage: "Olá, vim pelo site e gostaria de mais informações sobre Previdência Especial e Rural."
   },
 ];
 
@@ -99,11 +105,11 @@ export default function Cards() {
      
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-x-14 md:max-w-6xl xl:max-w-8xl mx-auto">
         
-          <h3 className="font-[merriweather] text-3xl text-azul-escuro">
+          <h3 className="font-[merriweather] text-3xl text-azul-escuro text-center lg:text-left md:col-span-2 lg:col-span-1">
           Explore Nossos Serviços Previdenciários
         </h3>
         
-        <p className="md:col-span-2 text-lg font-medium text-azul-escuro/80">
+        <p className="md:col-span-2 text-lg font-medium text-azul-escuro/80 text-justify lg:text-left md:px-20 lg:px-0">
           Orientamos em aposentadorias, auxílios e revisões, garantindo seus
           direitos com segurança e eficiência.
         </p>
@@ -137,9 +143,11 @@ export default function Cards() {
             </div>
             <hr className="border-t border-gray-600 my-5" />
             <div className="flex items-center justify-between text-[#c47b40]">
-              <RevealOnScroll delay={0.6}>{card.icon && card.icon}</RevealOnScroll>
+              <RevealOnScroll delay={0.5}>{card.icon && card.icon}</RevealOnScroll>
               
-              <RevealOnScroll delay={0.6}><button
+              <RevealOnScroll delay={0.5}><a
+              href={`https://wa.me/5551981113381?text=${encodeURIComponent(card.whatsappMessage)}`}
+  target="_blank"
                 className="relative group p-2 text-sm font-semibold text-cobre-claro border-2 border-cobre-claro bg-transparent mt-4 overflow-hidden
              transition-all duration-600 ease-[cubic-bezier(0.23,1,0.32,1)]
              hover:scale-102 hover:shadow-[0_0_20px_rgba(193,163,98,0.4)]
@@ -147,7 +155,7 @@ export default function Cards() {
               >
                 Saiba mais
                 
-              </button></RevealOnScroll>
+              </a></RevealOnScroll>
               
             </div>
           </div>

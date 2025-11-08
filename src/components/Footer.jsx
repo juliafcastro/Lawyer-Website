@@ -1,9 +1,8 @@
 import Logo from "./Logo";
-import { Phone } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-azul-escuro text-cinza-claro p-6 md:p-8">
+    <footer className="bg-azul-escuro text-cinza-claro p-6 md:p-8 md:pb-4">
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 items-start text-center md:text-left break-words">
         
         {/* Logo */}
@@ -40,7 +39,7 @@ export default function Footer() {
       </div>
 
       {/* Copyright */}
-      <div className="mt-5 border-t border-cinza-claro/30 pt-3 text-center">
+      <div className="mt-5 border-t border-cinza-claro/30 pt-3 text-center flex items-center justify-center">
         <p className="font-[merriweather] text-sm">
           © Copyright - Castro Sociedade Individual de Advocacia
         </p>
