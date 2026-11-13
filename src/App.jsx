@@ -5,6 +5,7 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import Nav from "./components/Nav";
+import WhatsappButton from "./components/ui/WhatsappButton"
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <section id="cards"><Cards /></section>
       <section id="about"><About /></section>
       <section id="contact"><Contact /></section>
+      <WhatsappButton />
       <Footer />
       
     </div>

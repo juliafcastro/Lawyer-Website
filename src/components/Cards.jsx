@@ -24,7 +24,7 @@ const cards = [
     id: 2,
     title: "DIREITO PENAL",
     description:
-      "Atuamos em aposentadorias, revisões e benefícios, garantindo os direitos previdenciários com segurança e eficiência.",
+      "Atuamos na defesa criminal, oferecendo assistência jurídica especializada com ética, compromisso e dedicação aos direitos de nossos clientes.",
     icon: <Accessibility size={35} />,
     whatsappMessage: "Olá, vim pelo site e gostaria de mais informações sobre Direito Penal."
   },
